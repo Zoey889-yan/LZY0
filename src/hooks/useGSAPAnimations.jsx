@@ -29,8 +29,8 @@ export default function useGSAPAnimations() {
       if (heroTitle) {
         heroTL.fromTo(
           heroTitle,
-          { clipPath: "inset(0 50% 0 50%)", y: 80, opacity: 0 },
-          { clipPath: "inset(0 0% 0 0%)", y: 0, opacity: 1, duration: 1.4 },
+          { scale: 0.92, y: 60, opacity: 0 },
+          { scale: 1, y: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
         );
       }
 
@@ -82,8 +82,8 @@ export default function useGSAPAnimations() {
           onEnter: () => {
             gsap.fromTo(
               el,
-              { clipPath: "inset(0 100% 0 0)", x: -20, opacity: 0 },
-              { clipPath: "inset(0 0% 0 0)", x: 0, opacity: 1, duration: 1.1, ease: EASE_SLOW },
+              { x: -20, opacity: 0 },
+              { x: 0, opacity: 1, duration: 0.9, ease: EASE_SLOW },
             );
           },
         });

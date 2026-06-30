@@ -101,7 +101,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="mailto:contact@example.com"
+            href="https://mail.qq.com" target="_blank"
             className="desktop-cta"
             style={{
               fontFamily: "var(--font-mono)",
