@@ -1,4 +1,4 @@
-import {
+﻿import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   ReferenceLine, ReferenceArea
 } from "recharts";
@@ -13,8 +13,13 @@ const chartData = sentimentData.map((d, i) => ({
 }));
 
 const pointEvents = [
+  { idx: 37, date: "2023/2/6", label: "谷歌宣布推出人工智能聊天机器人Bard(后改名Gemini)", color: "#f59e0b" },
+  { idx: 39, date: "2023/2/8", label: "Bard在一次回答问题的演示中给出了错误答案，2月8日谷歌的母公司Alphabet股价迅速下跌", color: "#ef4444" },
   { idx: 73, date: "2023/3/14", label: "GPT-4正式官宣发布", color: "#818cf8" },
-  { idx: 199, date: "2023/7/18", label: "Meta正式开源Llama 2大模型", color: "#34d399" },
+  { idx: 74, date: "2023/3/15", label: "Claude初代版本发布", color: "#34d399" },
+  { idx: 88, date: "2023/3/29", label: "埃隆·马斯克 (Elon Musk) 和 AI 领域的专家们呼吁暂停开发超越 GPT-4 的更强大 AI 系统，为期 6 个月", color: "#f97316" },
+  { idx: 199, date: "2023/7/18", label: "Meta正式开源LLaMA 2大模型", color: "#34d399" },
+  { idx: 306, date: "2023/11/2", label: "11月埃隆·马斯克 (Elon Musk) 的 xAI （后改名SpaceXAI）发布了 Grok", color: "#a78bfa" },
   { idx: 345, date: "2023/12/11", label: "年末行业隐患集中复盘，公众AI好感持续走低", color: "#ef4444" },
 ];
 
@@ -88,8 +93,13 @@ export default function DailyTweetChart() {
           <ReferenceArea x1={142} x2={152} fill="rgba(245,158,11,0.06)" stroke="rgba(245,158,11,0.2)" strokeDasharray="3 3" />
 
           {/* Event markers */}
+          <ReferenceLine x={37} stroke="rgba(245,158,11,0.35)" strokeDasharray="4 4" />
+          <ReferenceLine x={39} stroke="rgba(239,68,68,0.35)" strokeDasharray="4 4" />
           <ReferenceLine x={73} stroke="rgba(129,140,248,0.35)" strokeDasharray="4 4" />
+          <ReferenceLine x={74} stroke="rgba(52,211,153,0.35)" strokeDasharray="4 4" />
+          <ReferenceLine x={88} stroke="rgba(249,115,22,0.35)" strokeDasharray="4 4" />
           <ReferenceLine x={199} stroke="rgba(52,211,153,0.35)" strokeDasharray="4 4" />
+          <ReferenceLine x={306} stroke="rgba(167,139,250,0.35)" strokeDasharray="4 4" />
           <ReferenceLine x={345} stroke="rgba(239,68,68,0.35)" strokeDasharray="4 4" />
 
           <Line

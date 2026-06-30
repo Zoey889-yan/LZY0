@@ -11,10 +11,11 @@ export default function Hero() {
     "Exploring how the public discusses AI on Twitter/X, tracking sentiment shifts across 2023."
   );
 
-  // Desktop mouse scrubbing
+  // Desktop mouse scrubbing — throttled via rAF for smooth, efficient seeking
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    let ticking = false;
 
     const onMouseMove = (e) => {
       if (window.innerWidth < 1024) return;
@@ -23,15 +24,13 @@ export default function Hero() {
       if (Math.abs(delta) < 3) return;
       targetTime.current += (delta / window.innerWidth) * 0.8 * video.duration;
       targetTime.current = Math.max(0, Math.min(targetTime.current, video.duration));
-    };
-
-    const onSeeked = () => {
-      if (animFrame.current) cancelAnimationFrame(animFrame.current);
-      animFrame.current = requestAnimationFrame(() => {
-        const diff = targetTime.current - video.currentTime;
-        if (Math.abs(diff) < 0.05) return;
-        video.currentTime += diff * 0.15;
-      });
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          video.currentTime = targetTime.current;
+          ticking = false;
+        });
+      }
     };
 
     const onLoaded = () => {
@@ -40,13 +39,10 @@ export default function Hero() {
     };
 
     window.addEventListener("mousemove", onMouseMove);
-    video.addEventListener("seeked", onSeeked);
     video.addEventListener("loadedmetadata", onLoaded);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
-      video.removeEventListener("seeked", onSeeked);
-      video.removeEventListener("loadedmetadata", onLoaded);
       if (animFrame.current) cancelAnimationFrame(animFrame.current);
     };
   }, []);
@@ -89,13 +85,15 @@ export default function Hero() {
           pointerEvents: "none",
           width: "100%",
           height: "100%",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       >
         <video
           ref={videoRef}
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260601_110537_3a579fa0-7bbc-4d94-9d25-0e816c7840f5.mp4"
           style={{
             width: "100%",

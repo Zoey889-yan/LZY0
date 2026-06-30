@@ -1,6 +1,6 @@
 ﻿import DailyTweetChart from "../charts/DailyTweetChart";
 import TweetCountChart from "../charts/TweetCountChart";
-import SentimentChart from "../charts/SentimentChart";
+import CorrelationScatter from "../charts/CorrelationScatter";
 import CombinedChart from "../charts/CombinedChart";
 import DailySentimentLine from "../charts/DailySentimentLine";
 import DailyTweetSentimentCombined from "../charts/DailyTweetSentimentCombined";
@@ -90,21 +90,6 @@ export default function Visualization() {
           </BorderGlow>
         </div>
 
-        {/* Chart 5 - Sentiment Over Time */}
-        <div  style={{ marginBottom: "3rem" }}>
-          <BorderGlow {...glowProps} borderRadius={16} glowIntensity={0.5}>
-            <div style={{ padding: "2rem" }}>
-              <div style={{ marginBottom: "1.5rem" }}>
-                <h3 style={{ fontSize: "1.125rem", fontWeight: 600, letterSpacing: "-0.01em", marginBottom: "0.5rem" }}>Sentiment Score Over Time</h3>
-                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                  周均情感得分。一个明显的 <strong style={{ color: "#ef4444" }}>下降轨迹</strong>从 1 月的约 78% 下降至 12 月的约 32%——这是全年公众舆论的剧烈转变。
-                </p>
-              </div>
-              <SentimentChart />
-            </div>
-          </BorderGlow>
-        </div>
-
         {/* Chart 6 - Combined Analysis */}
         <div  style={{ marginBottom: "3rem" }}>
           <BorderGlow {...glowProps} borderRadius={16} glowIntensity={0.5}>
@@ -116,6 +101,21 @@ export default function Visualization() {
                 </p>
               </div>
               <CombinedChart />
+            </div>
+          </BorderGlow>
+        </div>
+
+{/* Chart 5 - Tweet Volume vs Sentiment Correlation */}
+        <div  style={{ marginBottom: "3rem" }}>
+          <BorderGlow {...glowProps} borderRadius={16} glowIntensity={0.5}>
+            <div style={{ padding: "2rem" }}>
+              <div style={{ marginBottom: "1.5rem" }}>
+                <h3 style={{ fontSize: "1.125rem", fontWeight: 600, letterSpacing: "-0.01em", marginBottom: "0.5rem" }}>Tweet Volume vs Sentiment — Correlation Scatter</h3>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
+                  每日推文量与情感得分的散点分布，按上半年（蓝）和下半年（橙）分组对比。上半年呈微弱正相关（r=0.169），下半年几乎无相关（r=-0.009），揭示了热度与舆论情感在时间维度上的分化关系。
+                </p>
+              </div>
+              <CorrelationScatter />
             </div>
           </BorderGlow>
         </div>

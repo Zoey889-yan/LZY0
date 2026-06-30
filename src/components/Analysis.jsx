@@ -111,6 +111,41 @@ export default function Analysis() {
             </div>
           </BorderGlow>
         </div>
+
+        {/* Data Distortion Card */}
+        <div style={{ marginTop: "1.5rem" }}>
+          <BorderGlow {...glowProps} borderRadius={16} glowIntensity={0.5} data-gsap="grid-card">
+            <div style={{ padding: "1.75rem" }}>
+              <h3 style={{ fontSize: "1rem", fontWeight: 600, letterSpacing: "-0.01em", marginBottom: "1rem" }}>数据失真点</h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                <div style={{ padding: "0.875rem 1.125rem", background: "rgba(239,68,68,0.06)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(239,68,68,0.15)" }}>
+                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "0.25rem" }}>2 月 · 严重失真</div>
+                  <div style={{ fontSize: "0.875rem", color: "var(--text-primary)", lineHeight: 1.6 }}>
+                    即便活跃度下滑，AI 相关日均讨论极少跌破 5,000 条，当前跌幅脱离真实平台承载量。怀疑全年热度洼地被刻意夸大，不能真实反映 2 月的 AI 讨论热度。
+                  </div>
+                </div>
+                <div style={{ padding: "0.875rem 1.125rem", background: "rgba(245,158,11,0.06)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(245,158,11,0.15)" }}>
+                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "0.25rem" }}>4 月 · 中度失真</div>
+                  <div style={{ fontSize: "0.875rem", color: "var(--text-primary)", lineHeight: 1.6 }}>
+                    GPT-4 余热未消，叠加意大利封禁 ChatGPT 带来的持续讨论，下旬理应维持热度。但表格显示 4 月下旬大量 3,000–4,500 的低值，不符合话题延续性，数据存在人为压低嫌疑。
+                  </div>
+                </div>
+                <div style={{ padding: "0.875rem 1.125rem", background: "rgba(239,68,68,0.06)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(239,68,68,0.15)" }}>
+                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "0.25rem" }}>7 月 · 可能失真</div>
+                  <div style={{ fontSize: "0.875rem", color: "var(--text-primary)", lineHeight: 1.6 }}>
+                    7 月理应全网冲高，但该数据集只零星点缀高点，月度推文量还没5月高，存在被人为压低的可能。LLaMA 2 开源等重大事件未能匹配应有的讨论量级，属于可能失真。
+                  </div>
+                </div>
+                <div style={{ padding: "0.875rem 1.125rem", background: "rgba(139,92,246,0.06)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(139,92,246,0.15)" }}>
+                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "0.25rem" }}>情感分析误差</div>
+                  <div style={{ fontSize: "0.875rem", color: "var(--text-primary)", lineHeight: 1.6 }}>
+                    若情感得分是基于 NLP 模型推断的，那么会存在语境理解偏差。讽刺、反语等复杂语言表达可能被误判，导致部分情感标签与真实舆论情绪不完全一致。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BorderGlow>
+        </div>
       </div>
     </section>
   );

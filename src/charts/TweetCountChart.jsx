@@ -4,7 +4,9 @@
 import { monthlyAggregates, stats } from "../data/sentimentData";
 
 const maxTotal = Math.max(...monthlyAggregates.map(d => d.totalTweets));
+const minTotal = Math.min(...monthlyAggregates.map(d => d.totalTweets));
 const peakMonth = monthlyAggregates.find(d => d.totalTweets === maxTotal)?.label || "";
+const lowMonth = monthlyAggregates.find(d => d.totalTweets === minTotal)?.label || "";
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -31,13 +33,17 @@ export default function TweetCountChart() {
           <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(99,102,241,0.06)" }} />
           <Bar dataKey="avgTweets" radius={[4, 4, 0, 0]} maxBarSize={36}>
             {monthlyAggregates.map((entry, idx) => (
-              <Cell key={idx} fill={entry.label === peakMonth ? "url(#barActive)" : "rgba(99,102,241,0.45)"} />
+              <Cell key={idx} fill={entry.label === peakMonth ? "url(#barActive)" : entry.label === lowMonth ? "url(#barLow)" : "rgba(99,102,241,0.45)"} />
             ))}
           </Bar>
           <defs>
             <linearGradient id="barActive" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#6366f1" stopOpacity={1} />
               <stop offset="100%" stopColor="#6366f1" stopOpacity={0.3} />
+            </linearGradient>
+            <linearGradient id="barLow" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#f59e0b" stopOpacity={1} />
+              <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.3} />
             </linearGradient>
           </defs>
         </BarChart>
@@ -50,6 +56,10 @@ export default function TweetCountChart() {
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <span style={{ width: 10, height: 10, borderRadius: 2, background: "#6366f1" }} />
           <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>Peak: {peakMonth}</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <span style={{ width: 10, height: 10, borderRadius: 2, background: "#f59e0b" }} />
+          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>Lowest: {lowMonth}</span>
         </div>
       </div>
     </div>

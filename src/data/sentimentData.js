@@ -1,4 +1,4 @@
-// Real 2023 Twitter/X AI Sentiment Dataset
+﻿// Real 2023 Twitter/X AI Sentiment Dataset
 // Source: User-provided data (daily_data_entries.txt)
 
 const dailyData = [
@@ -407,7 +407,7 @@ export const keyEvents = [
   { date: "2023-01", label: "Jan", title: "ChatGPT Peak Hype", description: "ChatGPT 用户突破一亿，全年推文数量最多，公众正面情绪达到全年最高点。", trend: "up", impact: "High" },
   { date: "2023-03", label: "Mar", title: "GPT-4 Released", description: "OpenAI推出GPT-4，引发大规模讨论热潮。整体舆论依旧偏向正面，但好感度开始逐步下滑。", trend: "mixed", impact: "High" },
   { date: "2023-05", label: "May", title: "AI Regulation Debate", description: "全球监管机构着手拟定人工智能相关法规。相关推文数量再次上涨，大众的积极情绪持续走低。", trend: "mixed", impact: "Medium" },
-  { date: "2023-07", label: "Jul", title: "Meta Launches Llama 2", description: "这款开源大模型再次掀起大众讨论热度。公众态度趋于平稳，但无法回到年初的乐观程度。", trend: "mixed", impact: "Medium" },
+  { date: "2023-07", label: "Jul", title: "Meta Launches LLaMA 2", description: "这款开源大模型再次掀起大众讨论热度。公众态度趋于平稳，但无法回到年初的乐观程度。", trend: "mixed", impact: "Medium" },
   { date: "2023-10", label: "Oct", title: "Sentiment Hits Year Low", description: "人工智能安全问题成为热议话题，正面情绪仅有11.5%，为全年最低值。", trend: "down", impact: "Critical" },
   { date: "2023-12", label: "Dec", title: "Year-End Sentiment Decline", description: "年末积极舆论占比为32%，不足一月份的一半。人们对人工智能的担忧日益加深，舆论风向彻底转变。", trend: "down", impact: "High" },
 ];

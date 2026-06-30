@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+﻿import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Research from "./components/Research";
@@ -29,17 +29,12 @@ export default function App() {
           <Suspense fallback={null}>
             <LiquidEther
               colors={["#5227FF", "#FF9FFC", "#B497CF", "#6366f1"]}
-              mouseForce={20}
-              cursorSize={195}
-              resolution={0.5}
-              isViscous={false}
-              viscous={30}
-              iterationsViscous={32}
-              iterationsPoisson={32}
-              isBounce={false}
+              resolution={0.35}
+              iterationsViscous={12}
+              iterationsPoisson={12}
               autoDemo={true}
-              autoSpeed={0.5}
-              autoIntensity={2.2}
+              autoSpeed={0.3}
+              autoIntensity={1.5}
               takeoverDuration={0.25}
               autoResumeDelay={3000}
               autoRampDuration={0.6}
